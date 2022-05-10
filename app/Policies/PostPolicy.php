@@ -97,6 +97,42 @@ class PostPolicy
     }
 
     /**
+     * Determine whether the user can update the model's tags relationship.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Auth\Access\Response|
+     */
+    public function updateTags(User $user, Post $post)
+    {
+        return $this->update($user, $post);
+    }
+
+    /**
+     * Determine whether the user can attach tags to the model's tags relationship.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Auth\Access\Response
+     */
+    public function attachTags(User $user, Post $post)
+    {
+        return $this->update($user, $post);
+    }
+
+    /**
+     * Determine whether the user can detach tags from the model's relationship.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Auth\Access\Response
+     */
+    public function detachTags(User $user, Post $post)
+    {
+        return $this->update($user, $post);
+    }
+
+    /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
